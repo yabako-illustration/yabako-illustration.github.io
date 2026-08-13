@@ -10,8 +10,8 @@
 <style>
   :root{
     /* 背景色：柔らかな黄色 / カード：白 */
-    --paper: #007965;
-    --paper-line: #007965;
+    --paper: #FFF7D6;
+    --paper-line: #FFE082;
     --card: #FFFFFF;
     --ink: #222222;
     --ink-soft: #555555;
@@ -142,12 +142,18 @@
   /* ---------- pinned illustration board ---------- */
   .board{ position:relative; height:420px; }
   .pin{
-    position:absolute; background:var(--card); border-radius:12px;
+    position:absolute; background:var(--card);
     padding:14px 14px 22px;
     border: 3px solid var(--ink);
     box-shadow:6px 8px 0 rgba(34,34,34,0.15);
     width:180px;
   }
+  /* ピン留めカードにもランダムな丸みを適用 */
+  .pin:nth-child(1) { border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+  .pin:nth-child(2) { border-radius: 20px 255px 20px 225px/225px 20px 255px 20px; }
+  .pin:nth-child(3) { border-radius: 225px 20px 15px 255px/20px 255px 20px 15px; }
+  .pin:nth-child(4) { border-radius: 15px 225px 255px 20px/255px 15px 225px 255px; }
+
   .pin .tape{
     position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);
     width:64px; height:26px; background:var(--tape); opacity:.9;
@@ -180,19 +186,35 @@
     box-shadow: 4px 4px 0 var(--ink);
     transition:transform .18s ease, box-shadow .18s ease;
   }
+  /* カテゴリカードにも不揃いな形を適応 */
+  .cat-card:nth-child(4n+1) { border-radius: 30px 15px 25px 18px / 18px 25px 15px 30px; }
+  .cat-card:nth-child(4n+2) { border-radius: 18px 28px 16px 24px / 24px 16px 28px 18px; }
+  .cat-card:nth-child(4n+3) { border-radius: 24px 16px 28px 18px / 18px 28px 16px 24px; }
+  .cat-card:nth-child(4n+4) { border-radius: 15px 30px 18px 25px / 25px 18px 30px 15px; }
+
   .cat-card:hover{ transform:translateY(-4px); box-shadow: 6px 8px 0 var(--ink); }
   .cat-card svg{ width:42px; height:42px; margin-bottom:8px; }
   .cat-card span{ font-size:14px; font-weight: 700; display:block; }
 
-  /* ---------- gallery ---------- */
+  /* ---------- gallery (歪んだランダム形状カード) ---------- */
   .gallery{ display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; }
   .card{
-    background:var(--card); border:3px solid var(--ink); border-radius:20px;
-    overflow:hidden; display:flex; flex-direction:column;
+    background:var(--card);
+    border:3px solid var(--ink);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
     box-shadow: 4px 4px 0 var(--ink);
     transition:transform .2s ease, box-shadow .2s ease;
   }
-  .card:hover{ transform:translateY(-5px); box-shadow:8px 10px 0 var(--ink); }
+
+  /* nth-childで4パターンを順番に割り当て（自動ランダム形状化） */
+  .gallery .card:nth-child(4n+1) { border-radius: 255px 18px 225px 15px / 15px 225px 18px 255px; }
+  .gallery .card:nth-child(4n+2) { border-radius: 20px 255px 15px 225px / 225px 15px 255px 20px; }
+  .gallery .card:nth-child(4n+3) { border-radius: 225px 15px 18px 255px / 18px 255px 15px 225px; }
+  .gallery .card:nth-child(4n+4) { border-radius: 18px 225px 255px 20px / 255px 20px 225px 18px; }
+
+  .card:hover{ transform:translateY(-5px) rotate(-1deg); box-shadow:8px 10px 0 var(--ink); }
   .card-art{
     aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
     padding:22px; background:var(--card);
@@ -216,7 +238,8 @@
 
   /* ---------- license note ---------- */
   .license{
-    margin-top:50px; border:3px dashed var(--ink); border-radius:22px;
+    margin-top:50px; border:3px dashed var(--ink);
+    border-radius:255px 25px 225px 25px/25px 225px 25px 255px;
     padding:28px 30px; display:flex; gap:20px; align-items:flex-start;
     background:var(--card); box-shadow: 6px 6px 0 var(--paper-line);
   }

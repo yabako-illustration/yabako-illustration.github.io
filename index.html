@@ -6,42 +6,39 @@
 <title>yabakoのフリーイラスト素材</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- ポップなフォント（Mochiy Pop P One / Zen Maru Gothic）を読み込み -->
-<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* ベース・背景（明るく弾けるペーパー感） */
-    --paper: #FFFDF4;
-    --paper-line: #FFEA79;
+    /* 背景色：柔らかな黄色 / カード：白 */
+    --paper: #FFF7D6;
+    --paper-line: #FFE082;
+    --card: #FFFFFF;
     --ink: #222222;
     --ink-soft: #555555;
 
-    /* ネオン＆ポップなアクセントカラー */
-    --coral: #FF3366;    /* ビビッドピンク・レッド */
-    --mint: #00D294;     /* 明るいポップミント */
-    --mustard: #FFB800;  /* ビタミンイエロー */
-    --denim: #00A6FB;    /* ソーダブルー */
-    --purple: #B5179E;   /* ポップパープル */
-    --tape: #FFE600;     /* ネオンイエローテープ */
-    --card: #FFFFFF;
-    --radius: 18px;
+    /* アクセントカラー */
+    --coral: #FF3366;
+    --mint: #00D294;
+    --mustard: #FFB800;
+    --denim: #00A6FB;
+    --purple: #B5179E;
+    --tape: #FFEA79;
 
-    /* フォント定義 */
-    --font-pop: 'Mochiy Pop P One', sans-serif;
-    --font-base: "Yu Gothic", "游ゴシック", YuGothic, "Zen Maru Gothic", sans-serif;
+    /* フォント設定：游ゴシック優先 */
+    --font-base: "Yu Gothic Medium", "游ゴシック Medium", "Yu Gothic", "游ゴシック", "YuGothic", "Zen Maru Gothic", sans-serif;
+    --font-heading: "Yu Gothic", "游ゴシック", "Zen Maru Gothic", sans-serif;
   }
 
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
   body{
     margin:0;
-    background:
-      radial-gradient(var(--paper-line) 2px, transparent 2px);
+    background: radial-gradient(var(--paper-line) 2px, transparent 2px);
     background-size: 20px 20px;
     background-color: var(--paper);
     color:var(--ink);
     font-family: var(--font-base);
-    font-weight: 500;
+    font-weight: 700;
     -webkit-font-smoothing:antialiased;
   }
 
@@ -52,7 +49,7 @@
   /* ---------- Header ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(255, 253, 244, 0.92);
+    background:rgba(255, 247, 214, 0.92);
     backdrop-filter:blur(8px);
     border-bottom:3px solid var(--ink);
   }
@@ -61,15 +58,16 @@
     padding:14px 28px;
   }
   .logo{
-    font-family: var(--font-pop);
+    font-family: 'Zen Maru Gothic', var(--font-heading);
+    font-weight: 900;
     font-size:28px;
     color: var(--coral);
     display:flex; align-items:center; gap:8px;
-    text-shadow: 2px 2px 0 var(--ink);
+    letter-spacing: -0.5px;
   }
   .logo svg{ width:36px; height:36px; }
-  nav{ display:flex; gap:26px; font-weight:700; font-size:15px; }
-  nav a{ position:relative; padding:4px 0; }
+  nav{ display:flex; gap:24px; font-weight:700; font-size:15px; }
+  nav a{ position:relative; padding:4px 0; white-space: nowrap; }
   nav a::after{
     content:""; position:absolute; left:0; bottom:-2px; width:0; height:4px;
     background:var(--coral); border-radius:4px; transition:width .25s ease;
@@ -77,35 +75,34 @@
   nav a:hover::after{ width:100%; }
 
   /* ---------- Hero ---------- */
-  .hero{ padding:64px 0 40px; position:relative; }
+  .hero{ padding:56px 0 40px; position:relative; }
   .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center; }
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
     font-size:13px; font-weight:700; color:var(--ink);
-    background:#FFF; border:2.5px solid var(--ink);
+    background:var(--card); border:2.5px solid var(--ink);
     padding:6px 14px; border-radius:999px; margin-bottom:18px;
     box-shadow: 3px 3px 0 var(--denim);
   }
   .eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:var(--coral); }
 
   h1{
-    font-family: var(--font-pop);
-    font-weight:400;
-    font-size:clamp(36px, 5vw, 56px);
-    line-height:1.35;
+    font-family: var(--font-heading);
+    font-weight:900;
+    font-size:clamp(36px, 5vw, 54px);
+    line-height:1.3;
     margin:0 0 18px;
     color: var(--ink);
+    letter-spacing: -1px;
   }
-  h1 .hl{
-    position:relative; white-space:nowrap;
-  }
+  h1 .hl{ position:relative; white-space:nowrap; }
   h1 .hl::after{
     content:""; position:absolute; left:-4px; right:-4px; bottom:2px; height:0.45em;
-    background:var(--mustard); opacity:.85; z-index:-1; border-radius:6px;
+    background:var(--coral); opacity:.85; z-index:-1; border-radius:6px;
     transform:rotate(-1.5deg);
   }
 
-  .lead{ color:var(--ink-soft); font-size:16px; line-height:1.9; max-width:46ch; margin-bottom:28px; font-weight: 700; }
+  .lead{ color:var(--ink-soft); font-size:15px; line-height:1.9; max-width:46ch; margin-bottom:28px; font-weight: 700; }
 
   .search-note{
     display:flex; align-items:center; gap:10px;
@@ -120,17 +117,19 @@
     border:none; outline:none; flex:1; font-family:var(--font-base); font-size:15px; font-weight:700; background:transparent;
   }
   .search-note button{
-    border:2.5px solid var(--ink); background:var(--coral); color:#fff; font-weight:400;
-    font-family: var(--font-pop);
+    border:2.5px solid var(--ink); background:var(--coral); color:#fff; font-weight:700;
+    font-family: var(--font-base);
     padding:8px 18px; border-radius:12px; cursor:pointer; font-size:15px;
     box-shadow: 2px 2px 0 var(--ink);
     transition:transform .15s ease, box-shadow .15s ease;
+    white-space: nowrap;
   }
   .search-note button:hover{ transform:translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
 
   .tag-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
   .tag{
-    font-family: var(--font-pop);
+    font-family: var(--font-base);
+    font-weight: 700;
     font-size:13px; padding:6px 14px; border-radius:999px;
     border:2.5px solid var(--ink); cursor:default;
     box-shadow: 2px 2px 0 var(--ink);
@@ -143,7 +142,7 @@
   /* ---------- pinned illustration board ---------- */
   .board{ position:relative; height:420px; }
   .pin{
-    position:absolute; background:#fff; border-radius:12px;
+    position:absolute; background:var(--card); border-radius:12px;
     padding:14px 14px 22px;
     border: 3px solid var(--ink);
     box-shadow:6px 8px 0 rgba(34,34,34,0.15);
@@ -156,7 +155,7 @@
     clip-path:polygon(4% 0,96% 0,100% 100%,0 100%);
   }
   .pin svg{ width:100%; height:120px; display:block; }
-  .pin .cap{ font-size:13px; text-align:center; margin-top:8px; color:var(--ink); font-weight:700; font-family: var(--font-pop); }
+  .pin .cap{ font-size:13px; text-align:center; margin-top:8px; color:var(--ink); font-weight:700; }
   .pin.p1{ top:0; left:8%; transform:rotate(-6deg); }
   .pin.p2{ top:36px; left:44%; transform:rotate(4deg); z-index:3; }
   .pin.p3{ top:210px; left:6%; transform:rotate(3deg); }
@@ -166,8 +165,8 @@
   .section{ padding:56px 0; }
   .section-head{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:12px; }
   .section-head h2{
-    font-family: var(--font-pop); font-weight:400; font-size:32px; margin:0;
-    position:relative; display:inline-block; color: var(--ink);
+    font-family: var(--font-heading); font-weight:900; font-size:30px; margin:0;
+    position:relative; display:inline-block; color: var(--ink); letter-spacing: -0.5px;
   }
   .section-head h2 svg{ position:absolute; left:0; bottom:-10px; width:100%; height:10px; }
   .section-head p{ color:var(--ink-soft); font-size:14px; margin:0; font-weight: 700; }
@@ -177,17 +176,13 @@
   .cat-card{
     flex:0 0 auto; width:136px; padding:20px 14px; border-radius:20px;
     border:3px solid var(--ink); text-align:center; cursor:pointer;
+    background:var(--card);
     box-shadow: 4px 4px 0 var(--ink);
     transition:transform .18s ease, box-shadow .18s ease;
   }
   .cat-card:hover{ transform:translateY(-4px); box-shadow: 6px 8px 0 var(--ink); }
   .cat-card svg{ width:42px; height:42px; margin-bottom:8px; }
-  .cat-card span{ font-family: var(--font-pop); font-size:13px; display:block; }
-  .cat-card.k1{ background:#FFE5EC; }
-  .cat-card.k2{ background:#E0F8F0; }
-  .cat-card.k3{ background:#FFF3C4; }
-  .cat-card.k4{ background:#E0F2FE; }
-  .cat-card.k5{ background:#F3E8FF; }
+  .cat-card span{ font-size:14px; font-weight: 700; display:block; }
 
   /* ---------- gallery ---------- */
   .gallery{ display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; }
@@ -200,24 +195,16 @@
   .card:hover{ transform:translateY(-5px); box-shadow:8px 10px 0 var(--ink); }
   .card-art{
     aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-    padding:22px;
+    padding:22px; background:var(--card);
   }
   .card-art svg{ width:100%; height:100%; }
-  .card.bg1 .card-art{ background:#FFE5EC; }
-  .card.bg2 .card-art{ background:#E0F8F0; }
-  .card.bg3 .card-art{ background:#FFF3C4; }
-  .card.bg4 .card-art{ background:#E0F2FE; }
-  .card.bg5 .card-art{ background:#F3E8FF; }
-  .card.bg6 .card-art{ background:#FFE5EC; }
-  .card.bg7 .card-art{ background:#E0F8F0; }
-  .card.bg8 .card-art{ background:#FFF3C4; }
   
   .card-info{
     padding:12px 14px 14px; border-top:3px solid var(--ink);
     display:flex; align-items:center; justify-content:space-between; gap:8px;
-    background:#FFF;
+    background:var(--card);
   }
-  .card-info .name{ font-family: var(--font-pop); font-size:14px; }
+  .card-info .name{ font-size:14px; font-weight: 700; }
   .dl-btn{
     border:2.5px solid var(--ink); background:var(--mustard);
     width:36px; height:36px; border-radius:12px; display:flex; align-items:center; justify-content:center;
@@ -231,22 +218,69 @@
   .license{
     margin-top:50px; border:3px dashed var(--ink); border-radius:22px;
     padding:28px 30px; display:flex; gap:20px; align-items:flex-start;
-    background:#FFF; box-shadow: 6px 6px 0 var(--paper-line);
+    background:var(--card); box-shadow: 6px 6px 0 var(--paper-line);
   }
   .license svg{ width:48px; height:48px; flex:0 0 auto; }
-  .license h3{ margin:0 0 6px; font-family: var(--font-pop); font-weight:400; font-size:22px; color: var(--coral); }
+  .license h3{ margin:0 0 6px; font-family: var(--font-heading); font-weight:900; font-size:20px; color: var(--coral); }
   .license p{ margin:0; color:var(--ink-soft); font-size:14px; line-height:1.8; font-weight:700; }
 
   /* ---------- footer ---------- */
-  footer{ margin-top:40px; border-top:3px solid var(--ink); padding:34px 0; background: #FFF; }
+  footer{ margin-top:40px; border-top:3px solid var(--ink); padding:34px 0; background: var(--card); }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
   .footer-inner .logo{ font-size:22px; }
   .foot-links{ display:flex; gap:20px; font-size:14px; font-weight:700; color:var(--ink-soft); }
 
-  @media (max-width:860px){
-    .hero-grid{ grid-template-columns:1fr; }
-    .board{ height:320px; margin-top:10px; }
-    .gallery{ grid-template-columns:repeat(2,1fr); }
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .wrap { padding: 0 16px; }
+
+    .header-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+    }
+
+    nav {
+      gap: 12px 16px;
+      font-size: 13px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .hero { padding: 32px 0 20px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+
+    h1 { font-size: 32px; }
+
+    .search-note {
+      max-width: 100%;
+      flex-wrap: wrap;
+      padding: 8px 12px;
+    }
+
+    .search-note input {
+      min-width: 160px;
+      font-size: 14px;
+    }
+
+    .search-note button {
+      width: 100%;
+      margin-top: 4px;
+      padding: 10px;
+    }
+
+    .board { height: 300px; margin-top: 10px; }
+    .pin { width: 140px; padding: 10px 10px 16px; }
+    .pin svg { height: 90px; }
+    
+    .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+    .license {
+      flex-direction: column;
+      padding: 20px;
+      gap: 12px;
+    }
   }
 </style>
 </head>
@@ -322,23 +356,23 @@
       <p>気になるテーマから、まとめて見られます</p>
     </div>
     <div class="cat-strip">
-      <div class="cat-card k1">
+      <div class="cat-card">
         <svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="12" fill="#FF3366" stroke="#222" stroke-width="2.5"/><path d="M14 12 L17 6 M26 12 L23 6" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg>
         <span>動物</span>
       </div>
-      <div class="cat-card k2">
+      <div class="cat-card">
         <svg viewBox="0 0 40 40"><path d="M20 8 C12 16 10 24 14 30 C17 34 23 34 26 30 C30 24 28 16 20 8Z" fill="#00D294" stroke="#222" stroke-width="2.5"/></svg>
         <span>季節の行事</span>
       </div>
-      <div class="cat-card k3">
+      <div class="cat-card">
         <svg viewBox="0 0 40 40"><rect x="9" y="16" width="22" height="16" rx="2" fill="#FFB800" stroke="#222" stroke-width="2.5"/><path d="M9 20 L31 20" stroke="#222" stroke-width="2.5"/></svg>
         <span>お仕事</span>
       </div>
-      <div class="cat-card k4">
+      <div class="cat-card">
         <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="#00A6FB" stroke="#222" stroke-width="2.5"/><path d="M20 20 L20 12 M20 20 L26 24" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
         <span>くらし</span>
       </div>
-      <div class="cat-card k5">
+      <div class="cat-card">
         <svg viewBox="0 0 40 40"><path d="M12 28 C12 18 28 18 28 28Z" fill="#B5179E" stroke="#222" stroke-width="2.5"/><circle cx="20" cy="16" r="4" fill="#B5179E" stroke="#222" stroke-width="2.5"/></svg>
         <span>食べもの</span>
       </div>
@@ -356,43 +390,43 @@
     </div>
 
     <div class="gallery">
-      <div class="card bg1">
-        <div class="card-art"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="60" rx="28" ry="20" fill="#fff" stroke="#222" stroke-width="2.5"/><path d="M30 46 L36 28 L46 44Z" fill="#fff" stroke="#222" stroke-width="2.5"/><path d="M70 46 L64 28 L54 44Z" fill="#fff" stroke="#222" stroke-width="2.5"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="60" rx="28" ry="20" fill="#FFE5EC" stroke="#222" stroke-width="2.5"/><path d="M30 46 L36 28 L46 44Z" fill="#FFE5EC" stroke="#222" stroke-width="2.5"/><path d="M70 46 L64 28 L54 44Z" fill="#FFE5EC" stroke="#222" stroke-width="2.5"/></svg></div>
         <div class="card-info"><span class="name">ねこ・よこ</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
 
-      <div class="card bg2">
-        <div class="card-art"><svg viewBox="0 0 100 100"><path d="M25 65 Q25 42 48 42 Q54 24 72 34 Q90 34 86 56 Q98 58 90 70 Q86 76 74 74 L34 74 Q22 72 25 65Z" fill="#fff" stroke="#222" stroke-width="2.5"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><path d="M25 65 Q25 42 48 42 Q54 24 72 34 Q90 34 86 56 Q98 58 90 70 Q86 76 74 74 L34 74 Q22 72 25 65Z" fill="#E0F2FE" stroke="#222" stroke-width="2.5"/></svg></div>
         <div class="card-info"><span class="name">くも</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
 
-      <div class="card bg3">
-        <div class="card-art"><svg viewBox="0 0 100 100"><rect x="26" y="30" width="48" height="40" rx="4" fill="#fff" stroke="#222" stroke-width="2.5"/><path d="M26 38 L50 56 L74 38" stroke="#222" stroke-width="2.5" fill="none" stroke-linejoin="round"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><rect x="26" y="30" width="48" height="40" rx="4" fill="#FFF3C4" stroke="#222" stroke-width="2.5"/><path d="M26 38 L50 56 L74 38" stroke="#222" stroke-width="2.5" fill="none" stroke-linejoin="round"/></svg></div>
         <div class="card-info"><span class="name">おてがみ</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
 
-      <div class="card bg4">
-        <div class="card-art"><svg viewBox="0 0 100 100"><path d="M50 26 C26 48 22 62 32 74 C40 84 60 84 68 74 C78 62 74 48 50 26Z" fill="#fff" stroke="#222" stroke-width="2.5"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><path d="M50 26 C26 48 22 62 32 74 C40 84 60 84 68 74 C78 62 74 48 50 26Z" fill="#E0F8F0" stroke="#222" stroke-width="2.5"/></svg></div>
         <div class="card-info"><span class="name">しずく</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
 
-      <div class="card bg5">
-        <div class="card-art"><svg viewBox="0 0 100 100"><circle cx="50" cy="48" r="24" fill="#fff" stroke="#222" stroke-width="2.5"/><path d="M40 48 h20 M50 38 v20" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M50 24 v-8" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><circle cx="50" cy="48" r="24" fill="#F3E8FF" stroke="#222" stroke-width="2.5"/><path d="M40 48 h20 M50 38 v20" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M50 24 v-8" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <div class="card-info"><span class="name">かさ</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
 
-      <div class="card bg6">
-        <div class="card-art"><svg viewBox="0 0 100 100"><rect x="30" y="50" width="40" height="24" rx="3" fill="#fff" stroke="#222" stroke-width="2.5"/><path d="M30 50 L50 30 L70 50" stroke="#222" stroke-width="2.5" fill="none" stroke-linejoin="round"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><rect x="30" y="50" width="40" height="24" rx="3" fill="#FFE5EC" stroke="#222" stroke-width="2.5"/><path d="M30 50 L50 30 L70 50" stroke="#222" stroke-width="2.5" fill="none" stroke-linejoin="round"/></svg></div>
         <div class="card-info"><span class="name">おうち</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
 
-      <div class="card bg7">
-        <div class="card-art"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="55" rx="26" ry="22" fill="#fff" stroke="#222" stroke-width="2.5"/><path d="M50 33 v-10 M44 25 h12" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="55" rx="26" ry="22" fill="#E0F8F0" stroke="#222" stroke-width="2.5"/><path d="M50 33 v-10 M44 25 h12" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div>
         <div class="card-info"><span class="name">りんご</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
 
-      <div class="card bg8">
-        <div class="card-art"><svg viewBox="0 0 100 100"><path d="M30 70 L38 34 L50 70Z" fill="#fff" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/><path d="M55 70 L65 30 L75 70Z" fill="#fff" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+      <div class="card">
+        <div class="card-art"><svg viewBox="0 0 100 100"><path d="M30 70 L38 34 L50 70Z" fill="#FFF3C4" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/><path d="M55 70 L65 30 L75 70Z" fill="#FFF3C4" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
         <div class="card-info"><span class="name">やま</span><div class="dl-btn"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0l-4-4m4 4l4-4" stroke="#222" stroke-width="2.5" stroke-linecap="round"/><path d="M5 19h14" stroke="#222" stroke-width="2.5" stroke-linecap="round"/></svg></div></div>
       </div>
     </div>

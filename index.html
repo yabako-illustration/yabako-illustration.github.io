@@ -32,7 +32,7 @@
        1. ヘッダー (緑エリア)
     -------------------------------------- */
     header {
-      background-color: #058855; /* 深い緑 */
+      background-color: #058855;
       color: #ffffff;
       padding: 40px 0 20px;
     }
@@ -44,7 +44,6 @@
       margin-bottom: 40px;
     }
 
-    /* タイトルロゴ画像 */
     .header-logo img {
       height: 70px;
       width: auto;
@@ -58,7 +57,6 @@
       font-weight: bold;
     }
 
-    /* ナビゲーション */
     .header-nav {
       display: flex;
       gap: 30px;
@@ -72,9 +70,7 @@
       text-underline-offset: 4px;
     }
 
-    /* --------------------------------------
-       共通見出し
-    -------------------------------------- */
+    /* 共通見出し */
     .section-title {
       font-size: 1.1rem;
       font-weight: bold;
@@ -127,7 +123,6 @@
       font-size: 1rem;
     }
 
-    /* タグ一覧 */
     .tag-group {
       display: flex;
       flex-wrap: wrap;
@@ -149,7 +144,7 @@
     }
 
     /* --------------------------------------
-       3. カテゴリから探す
+       3. ① カテゴリから探す (画像化)
     -------------------------------------- */
     .category-section {
       padding: 20px 0 40px;
@@ -161,23 +156,24 @@
       justify-content: space-between;
     }
 
-    /* もこもこキャンディ型ボタン */
     .category-item {
-      background: #221e1f;
-      color: #fff;
+      display: block;
       width: 100px;
-      height: 60px;
-      border-radius: 20px; /* 画像素材がある場合は background-image に差し替えてください */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: bold;
-      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .category-item:hover {
+      transform: translateY(-3px); /* カテゴリも触ると少し浮く */
+    }
+
+    .category-item img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* --------------------------------------
-       4. 新着素材
+       4. ②＆③ 新着素材 (SVG枠・DLアイコン・アニメーション)
     -------------------------------------- */
     .new-section {
       padding: 20px 0 40px;
@@ -190,24 +186,79 @@
       margin-bottom: 20px;
     }
 
-    /* もこもこフレーム付きのカード */
     .material-card {
-      border: 2px dashed #ccc; /* 仮枠：フレーム画像がある場合は調整 */
-      border-radius: 15px;
-      padding: 15px 10px;
       text-align: center;
-      background: #fff;
     }
 
-    .material-card img {
-      width: 80%;
-      height: auto;
+    /* ③ 素材画像枠のホバー設定（少し浮く） */
+    .material-frame-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 8px;
+      transition: transform 0.25s ease, filter 0.25s ease;
+      cursor: pointer;
     }
 
-    .material-card p {
-      font-size: 0.8rem;
+    /* SVG枠背景（カード外枠） */
+    .material-frame-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* 素材画像本体 */
+    .material-img {
+      position: relative;
+      z-index: 2;
+      max-width: 75%;
+      max-height: 75%;
+      object-fit: contain;
+    }
+
+    /* ③ 素材枠を触ると少し上に浮く */
+    .material-frame-wrapper:hover {
+      transform: translateY(-6px);
+    }
+
+    /* タイトルとDLアイコンの横並びフッター */
+    .material-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .material-title {
+      font-size: 0.85rem;
       font-weight: bold;
+    }
+
+    /* ③ ダウンロードアイコン（SVG）のホバー設定（少し傾く） */
+    .download-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .download-icon-btn img,
+    .download-icon-btn svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    /* DLアイコンを触ると少し右に傾く（斜めになる） */
+    .download-icon-btn:hover {
+      transform: rotate(15deg) scale(1.1);
     }
 
     .more-link {
@@ -221,27 +272,49 @@
     }
 
     /* --------------------------------------
-       5. 利用規約バナー（オレンジギザギザ）
+       5. ④ 利用規約バナー (SVGの形状枠)
     -------------------------------------- */
     .terms-section {
       margin: 60px 0;
     }
 
-    .terms-banner {
-      background-color: #e65233; /* 朱色/オレンジ */
-      color: #fff;
-      padding: 30px;
-      border-radius: 30px; /* ギザギザ枠画像にする場合は background-image 指定 */
+    /* SVG背景枠で囲むコンテナ */
+    .terms-banner-wrapper {
       position: relative;
+      width: 100%;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      color: #ffffff;
     }
 
-    .terms-banner h3 {
+    /* 背景に置く赤枠SVG */
+    .terms-svg-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      object-fit: fill; /* 形を枠いっぱいに広げる */
+    }
+
+    /* SVGの上に表示するコンテンツ */
+    .terms-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .terms-content h3 {
       font-size: 1.2rem;
       margin-bottom: 10px;
     }
 
-    .terms-banner p {
+    .terms-content p {
       font-size: 0.8rem;
       line-height: 1.6;
       margin-bottom: 15px;
@@ -255,10 +328,12 @@
       border-radius: 20px;
       font-weight: bold;
       font-size: 0.9rem;
-      position: absolute;
-      right: 40px;
-      bottom: 20px;
       border: 1px solid #111;
+      transition: transform 0.2s ease;
+    }
+
+    .terms-btn:hover {
+      transform: scale(1.05);
     }
 
     /* --------------------------------------
@@ -286,7 +361,6 @@
     <div class="container">
       <div class="header-top">
         <div class="header-logo">
-          <!-- タイトル画像（logo.png）をご用意の画像に打ち替えてください -->
           <img src="logo.png" alt="YABAKO'S FREE ILLUSTRATION">
         </div>
         <div class="header-profile">
@@ -331,86 +405,137 @@
           </div>
         </div>
         <div class="search-right">
-          <!-- メインイラスト画像 -->
           <img src="santa.png" alt="サンタ">
         </div>
       </div>
     </section>
 
-    <!-- 3. カテゴリから探す -->
+    <!-- 3. ① カテゴリから探す（各アイコン画像） -->
     <section class="category-section">
       <div class="section-title">カテゴリから探す</div>
       <div class="category-grid">
-        <div class="category-item">オフィス</div>
-        <div class="category-item">せいかつ</div>
-        <div class="category-item">イベント</div>
-        <div class="category-item">どうぶつ</div>
-        <div class="category-item">しょくぶつ</div>
-        <div class="category-item">にんげん</div>
-        <div class="category-item">食べ物</div>
+        <a href="#" class="category-item"><img src="cat-office.png" alt="オフィス"></a>
+        <a href="#" class="category-item"><img src="cat-life.png" alt="せいかつ"></a>
+        <a href="#" class="category-item"><img src="cat-event.png" alt="イベント"></a>
+        <a href="#" class="category-item"><img src="cat-animal.png" alt="どうぶつ"></a>
+        <a href="#" class="category-item"><img src="cat-plant.png" alt="しょくぶつ"></a>
+        <a href="#" class="category-item"><img src="cat-human.png" alt="にんげん"></a>
+        <a href="#" class="category-item"><img src="cat-food.png" alt="食べ物"></a>
       </div>
     </section>
 
-    <!-- 4. 新着素材 -->
+    <!-- 4. ②＆③ 新着素材（SVG枠・画像・文字・DLアイコン・アニメーション） -->
     <section class="new-section">
       <div class="section-title">新着素材</div>
       <div class="material-grid">
+
+        <!-- カード1つ分の構造 -->
         <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
+          <!-- 素材画像＋SVG外枠（触ると浮くエリア） -->
+          <div class="material-frame-wrapper">
+            <!-- ② 外枠SVG画像 -->
+            <img src="card-frame.svg" class="material-frame-bg" alt="">
+            <!-- 素材画像 -->
+            <img src="santa.png" class="material-img" alt="ごみサンタ">
+          </div>
+          <!-- タイトル＆ダウンロードアイコン -->
+          <div class="material-info">
+            <span class="material-title">ごみサンタ</span>
+            <!-- ③ 触ると傾くDLアイコン(SVG) -->
+            <a href="#" class="download-icon-btn" title="ダウンロード">
+              <img src="download-icon.svg" alt="ダウンロード">
+            </a>
+          </div>
         </div>
+
+        <!-- ※同じカード構造の複製（表示確認用） -->
         <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
+          <div class="material-frame-wrapper">
+            <img src="card-frame.svg" class="material-frame-bg" alt="">
+            <img src="santa.png" class="material-img" alt="ごみサンタ">
+          </div>
+          <div class="material-info">
+            <span class="material-title">ごみサンタ</span>
+            <a href="#" class="download-icon-btn">
+              <img src="download-icon.svg" alt="ダウンロード">
+            </a>
+          </div>
         </div>
+
         <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
+          <div class="material-frame-wrapper">
+            <img src="card-frame.svg" class="material-frame-bg" alt="">
+            <img src="santa.png" class="material-img" alt="ごみサンタ">
+          </div>
+          <div class="material-info">
+            <span class="material-title">ごみサンタ</span>
+            <a href="#" class="download-icon-btn">
+              <img src="download-icon.svg" alt="ダウンロード">
+            </a>
+          </div>
         </div>
+
         <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
+          <div class="material-frame-wrapper">
+            <img src="card-frame.svg" class="material-frame-bg" alt="">
+            <img src="santa.png" class="material-img" alt="ごみサンタ">
+          </div>
+          <div class="material-info">
+            <span class="material-title">ごみサンタ</span>
+            <a href="#" class="download-icon-btn">
+              <img src="download-icon.svg" alt="ダウンロード">
+            </a>
+          </div>
         </div>
+
         <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
+          <div class="material-frame-wrapper">
+            <img src="card-frame.svg" class="material-frame-bg" alt="">
+            <img src="santa.png" class="material-img" alt="ごみサンタ">
+          </div>
+          <div class="material-info">
+            <span class="material-title">ごみサンタ</span>
+            <a href="#" class="download-icon-btn">
+              <img src="download-icon.svg" alt="ダウンロード">
+            </a>
+          </div>
         </div>
+
+        <!-- 2段目（省略可） -->
         <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
+          <div class="material-frame-wrapper">
+            <img src="card-frame.svg" class="material-frame-bg" alt="">
+            <img src="santa.png" class="material-img" alt="ごみサンタ">
+          </div>
+          <div class="material-info">
+            <span class="material-title">ごみサンタ</span>
+            <a href="#" class="download-icon-btn">
+              <img src="download-icon.svg" alt="ダウンロード">
+            </a>
+          </div>
         </div>
-        <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
-        </div>
-        <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
-        </div>
-        <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
-        </div>
-        <div class="material-card">
-          <img src="santa.png" alt="ごみサンタ">
-          <p>ごみサンタ 📥</p>
-        </div>
+
       </div>
       <div class="more-link">
         <a href="#">more...</a>
       </div>
     </section>
 
-    <!-- 5. 利用規約バナー -->
+    <!-- 5. ④ 利用規約バナー（赤枠SVG指定） -->
     <section class="terms-section">
-      <div class="terms-banner">
-        <h3>キュートなイラスト、無料で使えます。</h3>
-        <p>
-          当サイトの素材は利用規約の範囲内で個人・商用問わず無料でご利用いただけます。<br>
-          素材そのものの販売や再配布、AI生成ツールへの読み込みはご遠慮ください。<br>
-          ベクターデータをダウンロードしたい方向けに、有料パッケージもご用意しています。
-        </p>
-        <a href="#" class="terms-btn">利用規約を読む ▶</a>
+      <div class="terms-banner-wrapper">
+        <!-- 背景のギザギザ赤枠SVG画像 -->
+        <img src="red-banner-frame.svg" class="terms-svg-bg" alt="">
+        
+        <div class="terms-content">
+          <h3>キュートなイラスト、無料で使えます。</h3>
+          <p>
+            当サイトの素材は利用規約の範囲内で個人・商用問わず無料でご利用いただけます。<br>
+            素材そのものの販売や再配布、AI生成ツールへの読み込みはご遠慮ください。<br>
+            ベクターデータをダウンロードしたい方向けに、有料パッケージもご用意しています。
+          </p>
+          <a href="#" class="terms-btn">利用規約を読む ▶</a>
+        </div>
       </div>
     </section>
 
